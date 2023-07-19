@@ -3,20 +3,20 @@ services:
   - docker
 
 ิิbefore_install:
-  - docker build -t kantapong/client-test -f ./client/Dockerfile.dev ./client
+  - docker build -t kantapong24/client-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true kantapong/client-test npm run test
+  - docker run -e CI=true kantapong24/client-test npm run test
 
 after_success:
-  - docker build -t kantapong/multi-client ./client
-  - docker build -t kantapong/multi-nginx ./nginx
-  - docker build -t kantapong/multi-server ./server
-  - docker build -t kantapong/multi-worker ./worker
+  - docker build -t kantapong24/multi-client ./client
+  - docker build -t kantapong24/multi-nginx ./nginx
+  - docker build -t kantapong24/multi-server ./server
+  - docker build -t kantapong24/multi-worker ./worker
   #  Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push kantapong/multi-client
-  - docker push kantapong/multi-nginx
-  - docker push kantapong/multi-server
-  - docker push kantapong/multi-worker
+  - docker push kantapong24/multi-client
+  - docker push kantapong24/multi-nginx
+  - docker push kantapong24/multi-server
+  - docker push kantapong24/multi-worker
