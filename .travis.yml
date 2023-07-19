@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+ิิbefore_install:
+  - docker build -t kantapong/client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run kantapong/client-test npm run test -- --coverage
+
+after_success:
+  - docker build -t kantapong/multi-client ./client
+  - docker build -t kantapong/multi-nginx ./nginx
+  - docker build -t kantapong/multi-server ./server
+  - docker build -t kantapong/multi-worker ./worker
