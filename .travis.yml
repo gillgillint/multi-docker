@@ -13,7 +13,7 @@ after_success:
   - docker build -t kantapong24/multi-nginx ./nginx
   - docker build -t kantapong24/multi-server ./server
   - docker build -t kantapong24/multi-worker ./worker
-  #  Login to the docker CLI
+  #  Login to the docker CLI test
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push kantapong24/multi-client
