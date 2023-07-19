@@ -6,7 +6,7 @@ services:
   - docker build -t kantapong/client-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm run test
+  - docker run -e CI=true kantapong/client-test npm run test
 
 after_success:
   - docker build -t kantapong/multi-client ./client
